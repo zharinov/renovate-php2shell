@@ -1,0 +1,21 @@
+name: PHP extraction fixture only
+on: workflow_dispatch
+env:
+  PHP_CONTROL: '8.2.34'
+jobs:
+  php:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.2.34', '8.3.35']
+    steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2.34'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '${{ matrix.php }}'
+      - uses: other/setup-php@v2
+        with:
+          php-version: '8.2.34'
+      - run: echo '8.2.34'

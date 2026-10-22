@@ -1,0 +1,34 @@
+{
+  "extends": ["config:recommended"],
+  "automerge": false,
+  "timezone": "Etc/UTC",
+  "schedule": ["* 0-1 1 1 *"],
+  "prConcurrentLimit": 1,
+  "branchConcurrentLimit": 1,
+  "prHourlyLimit": 1,
+  "packageRules": [
+    { "matchFileNames": ["cases/**"], "additionalBranchPrefix": "{{parentDir}}-" },
+    { "matchManagers": ["github-actions"], "enabled": false },
+    { "matchFileNames": ["**", "!cases/early-limit/**", "!cases/limit-control/**"], "prConcurrentLimit": 0, "branchConcurrentLimit": 0, "prHourlyLimit": 0 },
+    { "matchFileNames": ["**", "!cases/early-schedule/**"], "schedule": [] },
+    {
+      "matchFileNames": ["cases/normal-patch/**", "cases/automerge/**", "cases/early-limit/**", "cases/early-schedule/**", "cases/frozen/**", "cases/disabled/**", "cases/approval/**", "cases/release-age/**", "cases/group-size/**"],
+      "allowedVersions": "<8.3.0"
+    },
+    { "matchFileNames": ["cases/normal-minor/**", "cases/separated/**", "cases/safe/**", "cases/limit-control/**"], "allowedVersions": "<8.4.0" },
+    { "matchFileNames": ["cases/separated/**"], "separateMinorPatch": true },
+    { "matchFileNames": ["cases/automerge/**"], "automerge": true, "automergeType": "pr", "platformAutomerge": false, "automergeSchedule": ["* 0-1 1 1 *"] },
+    { "matchFileNames": ["cases/early-limit/**", "cases/limit-control/**"], "prPriority": -10 },
+    { "matchFileNames": ["cases/frozen/**"], "updatePinnedDependencies": false },
+    { "matchFileNames": ["cases/disabled/**"], "enabled": false },
+    { "matchFileNames": ["cases/approval/**"], "dependencyDashboardApproval": true },
+    { "matchFileNames": ["cases/release-age/**"], "minimumReleaseAge": "36500 days", "internalChecksFilter": "strict" },
+    { "matchFileNames": ["cases/group-size/**"], "groupName": "coordinated runtime update", "minimumGroupSize": 99 },
+    { "matchFileNames": ["cases/group/**"], "additionalBranchPrefix": "", "groupName": "existing PHP group" },
+    { "matchFileNames": ["cases/group/**"], "matchCurrentValue": "/^8\\.2\\./", "allowedVersions": "<8.3.0" },
+    { "matchFileNames": ["cases/group/**"], "matchCurrentValue": "/^8\\.3\\./", "allowedVersions": "<8.4.0" },
+    { "matchFileNames": ["cases/docker/**"], "allowedVersions": "/^8\\.4\\.\\d+-fpm-alpine$/" },
+    { "matchFileNames": ["cases/digest-pin/**", "cases/digest-refresh/**"], "allowedVersions": "/^8\\.2\\.34-fpm-alpine$/", "pinDigests": true }
+  ],
+  "ignorePaths": ["cases/ignored/**"]
+}
