@@ -1,1 +1,1 @@
-FROM php:8.4.26-fpm-alpine
+FROM php:8.4.27-fpm-alpine
