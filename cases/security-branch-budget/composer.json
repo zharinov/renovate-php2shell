@@ -1,1 +1,1 @@
-{"name":"reproduction/security-branch-budget","require":{"php":"8.2.34"}}
+{"name":"reproduction/security-branch-budget","require":{"php":"8.5.12"}}
