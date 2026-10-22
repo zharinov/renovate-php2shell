@@ -3,11 +3,11 @@
 lockfile_version = 3
 
 [[tools.php]]
-version = "8.4.26"
+version = "8.5.12"
 specifiers = ["latest"]
 
 [tools.php."platforms.linux-x64"]
-url = "https://github.com/php/php-src/archive/php-8.4.26.tar.gz"
+url = "https://github.com/php/php-src/archive/php-8.5.12.tar.gz"
 
 [tools.php."platforms.macos-arm64"]
-url = "https://github.com/php/php-src/archive/php-8.4.26.tar.gz"
+url = "https://github.com/php/php-src/archive/php-8.5.12.tar.gz"
