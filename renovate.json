@@ -9,8 +9,8 @@
   "packageRules": [
     { "matchFileNames": ["cases/**"], "additionalBranchPrefix": "{{parentDir}}-" },
     { "matchManagers": ["github-actions"], "enabled": false },
-    { "matchFileNames": ["**", "!cases/early-limit/**", "!cases/limit-control/**"], "prConcurrentLimit": 0, "branchConcurrentLimit": 0, "prHourlyLimit": 0 },
-    { "matchFileNames": ["**", "!cases/early-schedule/**"], "schedule": [] },
+    { "matchFileNames": ["!cases/early-limit/**", "!cases/limit-control/**"], "prConcurrentLimit": 0, "branchConcurrentLimit": 0, "prHourlyLimit": 0 },
+    { "matchFileNames": ["!cases/early-schedule/**"], "schedule": [] },
     {
       "matchFileNames": ["cases/normal-patch/**", "cases/automerge/**", "cases/early-limit/**", "cases/early-schedule/**", "cases/frozen/**", "cases/disabled/**", "cases/approval/**", "cases/release-age/**", "cases/group-size/**"],
       "allowedVersions": "<8.3.0"
